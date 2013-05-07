@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+html, body {
+	font-family: "微软雅黑";
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+	padding: 0;
+	margin: 0;
+}
+
+
+#top {
+	width: 100%;
+	background-color: #87CEEB;
+}
+
+#left {
+	float: left;
+	background-color: #f0f8ff; 
+	width: 200px;
+	height: 1000px;
+}
+
+#content {
+	width: 800px;
+	background-color: #DCDCDC; 
+}
+
+.list-footer {
+	text-align: center;	
+}
+
+table {
+	border: 1px solid #E8E8E8; 	
+}

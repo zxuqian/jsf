@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<h:outputStylesheet name="style.css" library="css" />
+<title>你的信息</title>
+</h:head>
+<body>
+	<h:form>
+		<h:graphicImage value="${resource['images:zhuoku063.jpg']}" width="200" height="150"></h:graphicImage>
+		<h2>Hello, #{myInfo.name}. 你的年龄是：#{myInfo.age}</h2>
+		<p><h:outputText id="result" value="#{myInfo.response}" /></p>
+		<p><h:outputText value="是否同意条款：#{myInfo.agreement}" /></p>
+		<p><h:outputText value="类别：#{myInfo.category}" /></p>
+		<p>
+			爱好：
+			<c:forEach items="#{myInfo.hobbies}" var="hobby">
+				<p><h:outputText value="#{hobby}" /></p>
+			</c:forEach>
+		</p>
+		<p>
+			书籍：
+			<c:forEach items="#{myInfo.books}" var="book">
+				<h:outputText value="#{book} " />
+			</c:forEach>
+		</p>
+		<h:commandButton value="返回" id="back" action="myinfo" />
+	</h:form>
+	<!-- EL测试 -->
+	<hr/>
+		<p>${1 > (4 / 2)}</p>
+		<p>${1.23E4}</p>
+		<p>${request.contextPath}</p>		
+		<p>${sessionScope.myInfo.name}</p>
+		<p>${header["host"]}</p>
+</body>
+</html>

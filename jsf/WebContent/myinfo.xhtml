@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+		
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<h:outputStylesheet name="style.css" library="css" />
+<title>Facelets应用</title>
+</h:head>
+<h:body>
+
+	<ui:composition template="templates/myinfo.xhtml">
+		<ui:define name="top">
+			<h1>这里是头部地区</h1>
+		</ui:define>
+		
+		<ui:define name="left">
+			<p>这里是左侧菜单</p>
+		</ui:define>
+		
+		<ui:define name="content">
+			<h:form>
+				<h2>这只不过是简单的facelets小程序，需要您的姓名和年龄</h2>
+				<p>
+					<h:inputText id="name" value="#{myInfo.name}" label="姓名" title="输入你的大名吧" validator="#{myInfo.validateName}">
+						<!-- 添加值变化一个监听器 -->
+						<f:valueChangeListener type="com.zxuqian.jsf.listener.NameListener" />
+					</h:inputText>
+					<h:message for="name" showSummary="true" showDetail="false" />
+				</p>
+				<p><h:inputText id="age" value="#{myInfo.age}" label="年龄" title="请问您高寿？">
+					<f:validateLongRange minimum="0" maximum="200" />
+				</h:inputText></p>
+				
+				<!-- 逐步增加的功能 -->
+				<p>
+					<!-- 图片  -->
+					<h:graphicImage url="/resources/images/zhuoku063.jpg" width="200" height="100" />
+					<h:graphicImage library="images" name="zhuoku063.jpg" width="200" height="100" />
+				</p>
+				
+				<p>
+					<!-- 单选-单选框 -->
+					<h:selectBooleanCheckbox id="agreement" value="#{myInfo.agreement}">是否同意条款： </h:selectBooleanCheckbox>
+				</p>
+				<p>
+					<!-- 下拉菜单 -->
+					<h:selectOneMenu id="类别" value="#{myInfo.category}">
+						<f:selectItem itemValue="1" itemLabel="购物" />
+						<f:selectItem itemValue="2" itemLabel="美食" />
+						<f:selectItem itemValue="3" itemLabel="科学" />
+					</h:selectOneMenu>
+				</p>
+				
+				<p>
+					<!-- 多选 -->
+					<!-- 复选框  layout 排列方向，横向和纵向-->
+					<h:selectManyCheckbox id="hobbies" layout="pageDirection" value="#{myInfo.hobbies}">
+						<f:selectItem itemValue="1" itemLabel="音乐" />
+						<f:selectItem itemValue="2" itemLabel="摄影" />
+						<f:selectItem itemValue="3" itemLabel="编程" />
+					</h:selectManyCheckbox>
+				</p>
+					
+				<p>
+					<!-- 多选菜单 -->
+					<h:selectManyMenu id="books" value="#{myInfo.books}">
+						<f:selectItems value="#{myInfo.bookItems}" />
+					</h:selectManyMenu>
+				</p>
+				
+				<p>
+					<!-- 显示一个表格 -->
+					<h:dataTable value="#{myInfo.students}" var="student">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="姓名" />
+							</f:facet>
+							<h:outputText value="#{student.name}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="年龄" />
+							</f:facet>
+							<h:outputText value="#{student.age}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="成绩" />
+							</f:facet>
+							<h:outputText value="#{student.score}" />
+						</h:column>
+					</h:dataTable>
+				</p>
+				
+				<p>
+					<!-- 现在是什么时间？Converter示例 -->
+					<h:outputText id="date" value="#{myInfo.date}" binding="#{myInfo.dateText}">
+						<f:convertDateTime locale="zh" type="both" timeStyle="full" />
+					</h:outputText>
+				</p>
+				<p>
+					<!-- 数字转换 -->
+					<h:outputText value="#{myInfo.price}">
+						<f:convertNumber currencyCode="CNY" type="currency" />
+					</h:outputText>
+				</p>
+				
+				<p>
+					<!-- actionListener 引用bean中的方法，在这里是myInfo里 -->
+					<h:commandButton id="submitButton" value="写完了就提交吧" action="info" actionListener="#{myInfo.submit}">
+						<!-- 添加一个动作监听器 -->
+						<f:actionListener type="com.zxuqian.jsf.listener.InfoActionLisener" />
+					</h:commandButton>
+					
+				</p>
+				<h:message for="age" id="errors" style="color: #ff0000" showSummary="true" showDetail="false" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+	
+</h:body>
+</html>

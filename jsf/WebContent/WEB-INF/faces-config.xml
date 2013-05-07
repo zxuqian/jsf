@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
+	<application>
+		<resource-bundle>
+			<base-name>com.zxuqian.messages.Messages</base-name>
+			<var>bundle</var>
+		</resource-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+	</application>
+	<managed-bean>
+		<managed-bean-name>student</managed-bean-name>
+		<managed-bean-class>com.zxuqian.jsf.cfg.beans.Student</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		
+		<managed-property>
+			<property-name>name</property-name>
+			<value>zhangsan</value>
+		</managed-property>
+		<managed-property>
+			<property-name>hobbies</property-name>
+			<property-class>java.util.List</property-class>
+			<list-entries>
+				<value>唱歌</value>
+				<value>跳舞</value>
+				<value>打架</value>
+			</list-entries>
+		</managed-property>
+		<managed-property>
+			<property-name>weeks</property-name>
+			<value>Sunday</value>
+		</managed-property>
+		<managed-property>
+			<property-name>contextParam</property-name>
+			<value>#{initParam.aaa}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>address</property-name>
+			<property-class>com.zxuqian.jsf.cfg.beans.Address</property-class>
+			<value>#{address}</value>
+		</managed-property>
+		
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>address</managed-bean-name>
+		<managed-bean-class>com.zxuqian.jsf.cfg.beans.Address</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>address</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>Baoding</value>
+		</managed-property>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>login.xhtml</display-name>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>hello</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

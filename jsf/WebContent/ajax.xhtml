@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ajax测试</title>
+</h:head>
+<body>
+	<h:form>
+		<p><h:inputText id="input" value="#{ajax.response}" /></p>
+		<p><h:commandButton id="submit" value="发送ajax请求">
+			<f:ajax event="click" execute="input" render="result" />
+		</h:commandButton></p>
+		<p><h:outputText id="result" value="#{ajax.response}" /></p>
+	</h:form>
+	<hr/>
+	<h2>加载js</h2>
+	<f:ajax event="click" onevent="msg" render="@form">
+		<h:form>
+			<h:outputScript name="script.js" library="js" target="head" />
+			<p><h:inputText id="name" value="#{ajax.name}" /></p>
+			<p><h:commandButton id="askname" value="发送name ajax请求">
+			</h:commandButton></p>
+			<p><h:outputText id="nameResult1" value="#{ajax.name}" /></p>
+			<p><h:outputText id="nameResult2" value="#{ajax.name}" /></p>
+		</h:form>
+		<p><h:outputText id="nameResult3" value="#{ajax.name}" /></p>
+	</f:ajax>
+	
+	<hr/>
+	<h2>JSF ajax</h2>
+	<h:form>
+		<p><h:inputText id="inputName" value="#{ajax.name}" /></p>
+		<p>
+			<h:commandButton id="submitName" value="发送name ajax请求" 
+							onclick="jsf.ajax.request(this, event, {execute:'inputName', render:'outputName'});
+									return false;" />
+		</p>
+		<p><h:outputText id="outputName" value="#{ajax.name}" /></p>
+	</h:form>
+</body>
+</html>

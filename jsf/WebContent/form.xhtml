@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<h:outputStylesheet name="style.css" library="css" />
+<title>JSF页面组件</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2" footerClass="list-footer" headerClass="list-header" bgcolor="#f0f8ff" cellpadding="10" cellspacing="0">
+			<f:facet name="header">
+				<h:outputText value="这是表格头部" />
+			</f:facet>
+				<h:outputLabel id="nameLabel" for="name" styleClass="label">
+					<h:outputText value="你的名字：" />
+				</h:outputLabel>
+				<h:inputText id="name" value="输入你的名字" label="名字" required="true" styleClass="input" />
+				<h:outputLabel id="passLabel" for="password" value="密码：" styleClass="label" />
+				<h:inputSecret id="password" redisplay="false" />
+			<f:facet name="footer">
+				<h:outputFormat value="Hello, {0}">
+					<f:param value="旭乾" />
+				</h:outputFormat>
+			</f:facet>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

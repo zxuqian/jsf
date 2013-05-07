@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:composite="http://java.sun.com/jsf/composite">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>这个内容不可见</title>
+</head>
+<body>
+	<composite:interface>
+		<composite:attribute name="number" required="false" />
+		<composite:attribute name="number2" required="false" />
+		<composite:attribute name="add" required="false" method-signature="java.lang.String add()" />
+		<composite:attribute name="numbean" />
+		<composite:editableValueHolder name="forValidate" targets="form:inputNumber" /> 
+		
+	</composite:interface>
+	
+	<composite:implementation>
+		<h:form id="form">
+			<h:outputLabel for="inputNumber" value="请输入数字" />
+			<h:inputText id="inputNumber" value="#{cc.attrs.numbean.number}" />
+			
+			<h:outputLabel for="inputNumber2" value="请输入数字2" />
+			<h:inputText id="inputNumber2" value="#{cc.attrs.numbean.number2}" />
+			
+			<h:commandButton id="submit" value="加法" action="#{cc.attrs.numbean.add}" />
+		</h:form>
+		
+	</composite:implementation>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>第一个测试JSF</title>
+</h:head>
+<body>
+	<h:form>
+		<h:inputText id="username" required="true" requiredMessage="用户名是必须的" maxlength="25" title="我的名字是： " value="#{hello.name}"></h:inputText>
+		<p></p>
+		<h:commandButton value="提交" id="submit" action="response">
+			<!-- 这个监听器可以把value的对象赋值给target -->
+			<f:setPropertyActionListener target="#{requestScope.inputname}" value="#{hello.name}" />
+		</h:commandButton>
+	</h:form>
+	<div class="messagecolor">
+        <h:messages showSummary="true" 
+                    showDetail="false"
+                    errorStyle="color: #d20005" 
+                    infoStyle="color: blue"/>
+    </div>
+    
+    <div>
+    	${hello.helloWorld}
+    </div>
+    <hr/>
+    <a href="faces/myinfo.xhtml">基本信息（各个控件示例）</a>
+    <a href="faces/number.xhtml">输入数字（composite component练习）</a>
+    <hr />
+    ${'${'}string1}
+    #{'#{'}string2}
+    ${request.contextPath}
+    <p></p>
+    <h:outputLink value="faces/form.xhtml">JSF页面组件</h:outputLink>
+    
+    <p>
+    	<h:outputLink value="database">数据库连接测试</h:outputLink>    
+    </p>
+    
+    <p>
+	    <h:form>
+	    	<h:commandLink action="#{databaseConnection.getCustomers}" value="数据库连接JSF" />
+	    </h:form>
+    </p>
+    
+    <!-- 可以收藏的连接，可以发送GET数据，测试跳转到response.xhtml里面 -->
+    <p>
+    	<h:link outcome="response.xhtml" includeViewParams="true" value="可以收藏的链接">
+    		<f:param name="name" value="xuqian" />
+    	</h:link>
+    </p>
+    
+    <p>
+    	<h:outputLink value="faces/ajax.xhtml">Ajax测试</h:outputLink>
+    </p>
+    
+    <p>
+    	<h:outputLink value="faces/customcomp.xhtml">自定义组件测试</h:outputLink>
+    </p>
+    
+    <p>
+    	<!-- 小测试 -->
+    	<h:form>
+		<h:inputText id="username" required="true" requiredMessage="用户名是必须的" maxlength="25" title="我的名字是： " value="#{hello.name}"></h:inputText>
+		<p></p>
+		<h:commandButton value="提交" id="submit" action="index" />
+	</h:form>
+    </p>
+    
+    <p>
+    	<!-- 自定义转换器 -->
+    	<h:form>
+    		<h:inputText value="#{hello.name}">
+    			<f:converter converterId="simp" />
+    		</h:inputText>
+    		<h:commandButton action="#{hello.converterSubmit}" value="转换" />
+    	</h:form>
+    </p>
+    
+    <h3>配置文件测试:</h3>
+    <p>
+    	<!-- 配置文件测试 -->
+    	<h:form>
+    		<h:selectManyCheckbox>
+    			<f:selectItems value="#{student.hobbies}"></f:selectItems>
+    		</h:selectManyCheckbox>
+    	</h:form>
+    </p>
+    <p>
+    	今天星期：<h:outputText value="#{student.weeks}" />
+    </p>
+    <p>
+    	JSF开发模式： <h:outputText value="#{student.contextParam}" />
+    </p>
+    <p>
+    	地址：<h:outputText value="#{student.address.address}" />
+    </p>
+    <p>
+    	资源文件： <h:outputText value="#{bundle.Hello}" />
+    </p>
+    <p>
+    	di测试：
+    	<h:form>
+    		<h:commandButton value="测试" action="#{test.greet}" />
+    	</h:form>
+    </p>
+</body>
+</html>

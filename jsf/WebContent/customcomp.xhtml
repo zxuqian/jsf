@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:z="http://zxuqianlabel"
+		xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>自定义的部件</title>
+</h:head>
+<body>
+	<h:form>
+		<z:zlabel id="aaa" value1="#{'Hello How are you?'}" action="#{hello.display}">
+			<f:actionListener type="com.zxuqian.jsf.custom.action.InputTextChangeAction" />
+		</z:zlabel>
+		
+		<!-- 这里不写action代表提交到本页面，不可以用action指定跳转到当前页面，因为
+			commandButton的实现机制是先跳转到请求处理，然后再跳转回来，这样参数的值
+			就不能保存了 -->
+		<h:commandButton id="submit" value="JSF提交"  />
+		<p>
+			触发了事件，取出session里面的username: #{sessionScope.username}
+		</p>
+	</h:form>
+</body>
+</html>

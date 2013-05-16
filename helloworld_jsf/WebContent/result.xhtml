@@ -4,13 +4,14 @@
 		xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Hello World</title>
+<title>Hello</title>
 </h:head>
 <body>
-	<h2>
-		<h:outputText value="#{greeting.greeting}" />
-	</h2>
-	<hr />
-	<h:outputLink value="faces/greeting.xhtml">Faces Example</h:outputLink>
+<h2>
+	Hello, <h:outputText value="#{greetMe.name}" />! Nice to meet you!
+</h2>
+<h:form>
+	<h:commandButton action="index" value="back" />
+</h:form>
 </body>
 </html>

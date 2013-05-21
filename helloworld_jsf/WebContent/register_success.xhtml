@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>User Information</title>
+</h:head>
+<body>
+<h1>Your Register Information</h1>
+<hr />
+<p>
+Your username: #{userInformationBean.username}
+</p>
+<p>
+Your password: #{userInformationBean.password}
+</p>
+<p>
+Your gender: #{userInformationBean.gender}
+</p>
+<p>
+Your hobbies: 
+<c:forEach items="#{userInformationBean.hobbies}" varStatus="status" var="hobby">
+	<c:if test="#{status.first != true}">,</c:if>
+	#{hobby}
+</c:forEach>
+</p>
+<p>
+Your country: #{userInformationBean.country}
+</p>
+<p>
+Your description: #{userInformationBean.description}
+</p>
+</body>
+</html>

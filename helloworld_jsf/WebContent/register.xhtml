@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>User Register</title>
+</h:head>
+<body>
+	<h:form>
+		<p>
+			<h:outputLabel value="Username: " for="username" />
+			<h:inputText value="#{userInformationBean.username}" id="username" />
+		</p>
+		<p>
+			<h:outputLabel value="Password: " for="password" />
+			<h:inputSecret value="#{userInformationBean.password}" id="password" />
+		</p>
+		<p>
+			<h:outputLabel value="Gender: " for="gender" />
+			<h:selectOneRadio value="#{userInformationBean.gender}" id="gender">
+				<f:selectItem itemLabel="Male" itemValue="Male" />
+				<f:selectItem itemLabel="Female" itemValue="Female" />
+			</h:selectOneRadio>
+		</p>
+		<p>
+			<h:outputLabel value="Hobbies: " for="hobbies" />
+			<h:selectManyCheckbox  value="#{userInformationBean.hobbies}" id="hobbies">
+				<f:selectItem itemLabel="Music" itemValue="Music" />
+				<f:selectItem itemLabel="Computer" itemValue="Computer" />
+				<f:selectItem itemLabel="Food" itemValue="Food" />
+				<f:selectItem itemLabel="Sport" itemValue="Sport" />
+			</h:selectManyCheckbox>
+		</p>
+		<p>
+			<h:outputLabel value="Country: " for="country" />
+			<h:selectOneMenu  value="#{userInformationBean.country}" id="country">
+				<f:selectItem itemLabel="U.S." itemValue="U.S." />
+				<f:selectItem itemLabel="China" itemValue="China" />
+				<f:selectItem itemLabel="Canada" itemValue="Canada" />
+				<f:selectItem itemLabel="Austrilia" itemValue="Austrilia" />
+			</h:selectOneMenu>
+		</p>
+		<p>
+			<h:outputLabel value="Description " for="description" />
+			<h:inputTextarea cols="30" rows="10" value="#{userInformationBean.description}" id="description" />
+		</p>
+		<p>
+			<h:commandButton action="register_success" value="Register" />
+		</p>
+	</h:form>
+</body>
+</html>
